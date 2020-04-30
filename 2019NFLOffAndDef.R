@@ -26,8 +26,7 @@ defenseLog <- function(team) {
   url <- read_html(paste0("https://www.pro-football-reference.com/teams/", team, "/2019/gamelog/"))
   file <- paste0("defense", team, "2019.csv")
   table <- url %>%
-    html_nodes("table") %>%
-    .[2] %>%
+    html_nodes("table[id='gamelog_opp2019']") %>%
     html_table(fill = TRUE)
   write.csv(table, file=file)
 }
